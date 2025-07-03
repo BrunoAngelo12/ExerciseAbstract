@@ -21,9 +21,10 @@ public class program {
         int n = sc.nextInt();
 
         for(int i = 1; i <= n; i++){
-            System.out.println("Tax payer #1 data: ");
+            System.out.println("Tax payer #" + i + " data: ");
             System.out.print("Individual or company (i/c)? ");
             char ch = sc.next().charAt(0);
+            sc.nextLine();
             if(ch == 'i'){
                 System.out.print("Name: ");
                 String name = sc.nextLine();
@@ -42,7 +43,11 @@ public class program {
                 list.add(new LegalEntity(name, anualIncome, numerEmployees));
             }
         }
-
+        System.out.println();
+        System.out.println("TAXES PAID: ");
+        for(Person p : list){
+            System.out.println(p.getName() + ": $ " + String.format("%.2f\n", p.calculateTax()));
+        }
 
         sc.close();
     }
